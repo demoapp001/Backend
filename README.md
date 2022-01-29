@@ -27,10 +27,9 @@
 ## Fejlesztői környezet
 
 - [OpenJDK-17.0.2](https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_windows-x64_bin.zip) - Környezeti változók: JAVA_HOME, PATH
-- [Maven](https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip)
+- [Maven](https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip) - Környezeti változók: MAVEN_HOME, PATH
 - [Spring Tool](https://spring.io/tools)
-- [Eclipse](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-12/R/eclipse-inst-jre-win64.exe&mirror_id=1) - Eclipse IDE for Enterprise Java and Web Developers
-- [Visual Studio Code](https://code.visualstudio.com/Download)
+- [Eclipse](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-12/R/eclipse-inst-jre-win64.exe&mirror_id=1) or [Visual Studio Code](https://code.visualstudio.com/Download) - Eclipse IDE for Enterprise Java and Web Developers
 - [Git](https://git-scm.com/download/win)
 - [Postman](https://www.postman.com/downloads/)
 
@@ -52,12 +51,50 @@
 - Dependencies:
   + *Spring Web*
 
+### Maven
 
-## REST API
+[Maven Archetypes](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)
+
+```
+mvn archetype:generate -DgroupId=test -DartifactId=demo -D archetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+```
+
+**.m2** könyvtár: A *maven* ebbe a könyvtárba tölti le és tárolja lokálisan a *java* könyvtárakat.
+
+### Annotációk
+
+- **@Component** - Általános célu komponenes
+  + **@RestController** - Rest Api (Átirányítja a forgalmat)
+  + **@Service** - Business logika
+  + **@Repository** - Adathozzáférési réteg 
+
+#### Folyamat
+
+```
+
+                                                                                               --- 
+     -----          * --------------- *     * --------------- *     * --------------- *      /     \
+   /       \        |                 |     |                 |     |                 |     |\     /|
+  |   user  | ----> | @RestController | --> |    @Servive     | --> |   @Repository   | --> |  ---  |
+   \       /        |                 |     |                 |     |                 |     |   DB  |
+     -----          * --------------- *     * --------------- *     * --------------- *      \     /
+                                                                                               --- 
+
+```
+
+### Scope
+
+- Singleton
+- Prototype
+- Request
+- Session
+- Global Session
+
+### REST API
 
 A **REST** az egy standard API-ok készítéséhez, amelyik **HTTP** protokollon keresztül működik.
 
-### HTTP
+#### HTTP
 
 HTTP Kérés: [http://localhost:8080/login]
 
@@ -75,7 +112,7 @@ HTTP Header
 Request Body
 - A lekérdezéshez tartozó adatok JSON
 
-### CRUD 
+#### CRUD 
 
 - Create **POST**
 - Read **GET**
