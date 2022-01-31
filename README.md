@@ -1,6 +1,14 @@
 # Adatbázis használat gyakorlatban
 
-## Web Applikáció
+_**Absztrakt:** A cél egy egyszerű, kokrét ipar ági ismereteket nem igénylő, mindenki számára könnyen megérthető projekt késztése. A projekt követi a cégeknél használatos általánosan elterjedt architektúrát. Egyetemista diákok számára szemléltetésként készült. Azt szeretné bemutatni, hogyan épül fel egy valós projekt backend-je és hogyan csatlakozik az adatbázishoz. Hogyan lesznek a táblák létrehozva az adatbázisban? Hogy lesznek a projekt élettartama során módosítva? Hogyan kerül tesztadat az adatbázisba? Hogy használja az applikáció az adatbázsit?_
+
+## Feladat 
+
+
+
+## Elméleti bevezető
+
+### Web Applikáció
 
 ```
           *------*   - HTML, CSS
@@ -32,26 +40,29 @@
 - [Eclipse](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-12/R/eclipse-inst-jre-win64.exe&mirror_id=1) or [Visual Studio Code](https://code.visualstudio.com/Download) - Eclipse IDE for Enterprise Java and Web Developers
 - [Git](https://git-scm.com/download/win)
 - [Postman](https://www.postman.com/downloads/)
+- [Docker](https://www.docker.com/products/docker-desktop)
 
+## Technológiák
 
-## Spring
+### Spring
 
 [start.spring.io](https://start.spring.io/)
 
 - Project: *Maven Project*
 - Spring Boot: *2.6.3*
 - Project Metadata:
-  + Group: *edu.reallife.example*
-  + Artifact:*demo*
-  + Name: *database-example*
-  + Description: *Real life example application structure using database*
-  + Paackage name: *edu.reallife.example*
+  + Group: *example.project*
+  + Artifact:*backend*
+  + Name: *backend-database-example*
+  + Description: *Real life example of backend application structure using database*
+  + Package name: *example.project.backend*
 - Packaging: *jar*
 - Java: *17*
 - Dependencies:
   + *Spring Web*
+  + *Lombok*
 
-### Maven
+#### Maven
 
 [Maven Archetypes](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)
 
@@ -61,7 +72,7 @@ mvn archetype:generate -DgroupId=test -DartifactId=demo -D archetypeArtifactId=m
 
 **.m2** könyvtár: A *maven* ebbe a könyvtárba tölti le és tárolja lokálisan a *java* könyvtárakat.
 
-### Annotációk
+#### Annotációk
 
 - **@Component** - Általános célu komponenes
   + **@RestController** - Rest Api (Átirányítja a forgalmat)
@@ -82,7 +93,7 @@ mvn archetype:generate -DgroupId=test -DartifactId=demo -D archetypeArtifactId=m
 
 ```
 
-### Scope
+#### Élettartam
 
 - Singleton
 - Prototype
