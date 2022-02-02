@@ -4,7 +4,27 @@ _**Absztrakt:** A cél egy egyszerű, kokrét ipar ági ismereteket nem igényl�
 
 ## Feladat 
 
+Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tárolni illetve megosztani egymással. Adottak a következő *use case*-ek.
 
+![use-case-diagram-png](doc/use-case-diagram.png)
+
+### Use Case leírás
+
+**Take note**
+> Létrehoz egy jegyzetet és hozzácsatolja a létrehozó személyéhez. Egy jegyzetsem létezhet létrehozó nélkül.
+>
+> *Endpoint:* `PUT http://localhost:3000/takeNote?user={uname}`
+> ```json
+> {
+>   "text":"This is the body of the note. 
+> }
+> ```
+
+### Osztálydiagram
+
+![class-diag-person-takes-notes.png](doc/class-diag-person-takes-notes.png);
+
+![class-diag-note-shared-with-person.png](doc/class-diag-note-shared-with-person.png);
 
 ## Elméleti bevezető
 
