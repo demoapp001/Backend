@@ -15,9 +15,7 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
 >
 > *Endpoint:* `PUT http://localhost:3000/takeNote?user={uname}`
 > ```json
-> {
->   "text":"This is the body of the note. 
-> }
+> { "text":"This is the body of the note." }
 > ```
 
 ### Osztálydiagram
@@ -27,6 +25,10 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
 ![class-diag-note-shared-with-person.png](doc/class-diag-note-shared-with-person.png);
 
 ## Elméleti bevezető
+Általánosságban elmondható hogy az aplikációt három nagyobb egységbe tagoljuk. 
+- Grafikus interface (amit **frontend**-nek vagy **UI**-nak nevezünk). 
+- Backend, ami egy webszerveren fut és általában a **business logikát** tartalmazza. A business logika nem más mint minden, amit az adatokkal teszünk, döntések, számítások, átalakítások.
+- Az adatbázis is egy különálló egysége az alkalmazásnak és az adatok illetve az alkalmazás állapotának tárolására szolgál.
 
 ### Web Applikáció
 
@@ -51,6 +53,8 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
           |  DB  |    - Oracle
           *------*    - Db2
 ```
+
+Ez a három egység azért bír jelentőséggel, mert ezek egymástól független egységek. Bármelyiket le lehet cserélni közülük anélkül, hogy a másik kettőn módosítanánk.
 
 ## Fejlesztői környezet
 
