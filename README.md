@@ -10,12 +10,25 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
 
 ### Use Case leírás
 
-**Take note**
-> Létrehoz egy jegyzetet és hozzácsatolja a létrehozó személyéhez. Egy jegyzetsem létezhet létrehozó nélkül.
+**Get all notes**
+> Lekérdezi egy személy összes jegyzetét, felhasználó név szerint.
 >
-> *Endpoint:* `PUT http://localhost:3000/takeNote?user={uname}`
+> *Endpoint:* `GET http://localhost:8080/person/all/notes/?uname=sandras`
+>
+> *Response:*
 > ```json
-> { "text":"This is the body of the note." }
+> [
+>   {
+>     "id": 1,
+>     "date": "2022-02-03T03:41:38.691+00:00",
+>     "text": "Hello World text!"
+>   },
+>   {
+>     "id": 2,
+>     "date": "2022-02-03T03:41:38.691+00:00",
+>     "text": "A second note"
+>   }
+> ] 
 > ```
 
 ### Osztálydiagram
