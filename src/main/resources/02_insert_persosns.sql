@@ -1,0 +1,3 @@
+INSERT INTO C##MZMSG.PERSONS (UNAME, NAME) VALUES ('kdani', 'Kertész Dániel');
+INSERT INTO C##MZMSG.PERSONS (UNAME, NAME) VALUES ('pandras', 'Petõ András');
+INSERT INTO C##MZMSG.PERSONS (UNAME, NAME) VALUES ('cshajni', 'Csizmadia Hajnal');

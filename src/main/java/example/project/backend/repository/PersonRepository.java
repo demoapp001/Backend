@@ -1,25 +1,12 @@
 package example.project.backend.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import example.project.backend.entity.Person;
 
 @Repository
-public class PersonRepository {
-	private List<Person> persons = new ArrayList<Person>();
-
-	public List<Person> getAllPersons() {
-		return persons;
-	}
+public interface PersonRepository extends JpaRepository<Person, Long> {
 	
-	public Person getPersonWithUsername(String uname) {
-		return persons
-				.stream()
-				.filter(person -> person.getUname().equals(uname))
-				.findFirst()
-				.orElse(null);
-	}
+	public Person findByUname(String uname);
 }

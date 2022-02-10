@@ -74,10 +74,10 @@ Ez a három egység azért bír jelentőséggel, mert ezek egymástól függetle
 - [OpenJDK-17.0.2](https://download.java.net/java/GA/jdk17.0.2/dfd4a8d0985749f896bed50d7138ee7f/8/GPL/openjdk-17.0.2_windows-x64_bin.zip) - Környezeti változók: JAVA_HOME, PATH
 - [Maven](https://dlcdn.apache.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.zip) - Környezeti változók: MAVEN_HOME, PATH
 - [Spring Tool](https://spring.io/tools)
-- [Eclipse](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-12/R/eclipse-inst-jre-win64.exe&mirror_id=1) or [Visual Studio Code](https://code.visualstudio.com/Download) - Eclipse IDE for Enterprise Java and Web Developers
+- [Eclipse](https://www.eclipse.org/downloads/download.php?file=/oomph/epp/2021-12/R/eclipse-inst-jre-win64.exe&mirror_id=1) - Eclipse IDE for Enterprise Java and Web Developers
 - [Git](https://git-scm.com/download/win)
 - [Postman](https://www.postman.com/downloads/)
-- [Docker](https://www.docker.com/products/docker-desktop)
+- [DBeaver](https://dbeaver.io/download/)
 
 ## Technológiák
 
@@ -166,3 +166,5 @@ Request Body
 - Read **GET**
 - Update **PUT**
 - Delete **DELETE**
+
+## Adatbázis
