@@ -7,6 +7,5 @@ import example.project.backend.entity.Person;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
-	
 	public Person findByUname(String uname);
 }

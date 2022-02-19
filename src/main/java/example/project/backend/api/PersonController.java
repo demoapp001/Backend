@@ -22,5 +22,5 @@ public class PersonController {
 		return personService
 				.getPersonWithUsername(uname)
 				.getNotes();
-	}
+	}	
 }

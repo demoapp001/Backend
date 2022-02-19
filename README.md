@@ -168,3 +168,22 @@ Request Body
 - Delete **DELETE**
 
 ## Adatbázis
+
+**pom.xml**
+
+```xml
+...
+	<dependencies>
+		...
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+	</dependencies>
+...
+```
