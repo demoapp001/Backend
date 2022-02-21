@@ -1,6 +1,6 @@
 # Adatbázis használat gyakorlatban
 
-_**Absztrakt:** A cél egy egyszerű, kokrét ipar ági ismereteket nem igénylő, mindenki számára könnyen megérthető projekt késztése. A projekt követi a cégeknél használatos általánosan elterjedt architektúrát. Egyetemista diákok számára szemléltetésként készült. Azt szeretné bemutatni, hogyan épül fel egy valós projekt backend-je és hogyan csatlakozik az adatbázishoz. Hogyan lesznek a táblák létrehozva az adatbázisban? Hogy lesznek a projekt élettartama során módosítva? Hogyan kerül tesztadat az adatbázisba? Hogy használja az applikáció az adatbázsit?_
+_**Absztrakt:** A cél egy egyszerű, konkrét iparági ismereteket nem igénylő, mindenki számára könnyen megérthető projekt késztése. A projekt követi a cégeknél használatos általánosan elterjedt architektúrát. Egyetemista diákok számára szemléltetésként készült. Azt szeretné bemutatni, hogyan épül fel egy valós projekt backend-je és hogyan csatlakozik az adatbázishoz. Hogyan lesznek a táblák létrehozva az adatbázisban? Hogy lesznek a projekt élettartama során módosítva? Hogyan kerül tesztadat az adatbázisba? Hogy használja az applikáció az adatbázsit?_
 
 ## Feladat 
 
@@ -8,34 +8,131 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
 
 ![use-case-diagram-png](doc/use-case-diagram.png)
 
-### Use Case leírás
+### Use Case 
 
-**Get all notes**
+**getAllNotes**
+
 > Lekérdezi egy személy összes jegyzetét, felhasználó név szerint.
 >
-> *Endpoint:* `GET http://localhost:8080/person/all/notes/?uname=sandras`
+> *Endpoint:* `GET http://localhost:8080/person/all/notes/?uname=kdani`
 >
-> *Response:*
+> *Response body:*
+>
 > ```json
 > [
->   {
->     "id": 1,
->     "date": "2022-02-03T03:41:38.691+00:00",
->     "text": "Hello World text!"
->   },
->   {
->     "id": 2,
->     "date": "2022-02-03T03:41:38.691+00:00",
->     "text": "A second note"
->   }
-> ] 
+>    {
+>        "id": 1,
+>        "date": "2022-02-10T17:17:26.000+00:00",
+>        "text": "Már kevesebb, mint egy hét van hátra az Elite Challenge próbáig. Számomra az elmúlt időszak (hiszen eredetileg április végén lett volna) az erre való felkészülés jegyében telt. Nem is elsősorban a fizikai felkészülés volt fontos a számomra, hanem az a belső út, amelyet végigjártam közben. Még indulás előtt szeretném elmondani a gondolataimat, érzéseimet, megéléseimet minderről - így sokkal érdekesebb lesz az, amit majd utána mondok...",
+>        "sharedWith": []
+>    },
+>    {
+>        "id": 2,
+>        "date": "2022-02-10T17:17:26.000+00:00",
+>        "text": "Pár évvel ezelőtt rátaláltam egy Mágusra.  Aki segített nekem, megerősödnöm,az akkori helyzetemből,energiavesztésemből kimásznom. Úgy éreztem azzal már egyedül nem tudok megbirkózni.",
+>        "sharedWith": [
+>            {
+>                "uname": "pandras"
+>            }
+>        ]
+>    },
+>    {
+>        "id": 3,
+>        "date": "2022-02-10T17:17:26.000+00:00",
+>        "text": "Két évvel ezelőtt 2016-ban .Újra megkerestem ,hogy segítsen nekem.  Azt éreztem nem a saját életemet élem, azt is tudtam  hogy kiét. Egy karma oldást , egyéb védelmet ,szigorú házifeladatot kaptam akkor.  Másnap már érezhető is volt a változás.Akkor találkoztam azzal a nagy barna lénnyel.Nem bántott csak figyelt. Egymásnak ütköztünk.Mintha akkor ő nem számított volna arra,hogy éppen kijövök arról a helyről.",
+>        "sharedWith": [
+>            {
+>                "uname": "cshajni"
+>            }
+>        ]
+>    }
+> ]
 > ```
+
+**addNote**
+
+> Készít egy jegyzetet és hozzárendeli egy személyhez
+>
+> *Endpoint*: `POST http://localhost:8080/notes/add/note/?uname=kdani`
+>
+> *Request body*:
+> 
+> ```json
+> {
+>     "text": "This is a test note"
+> }
+> ```
+>
+> *Response body*: 
+>
+> ```json
+> {
+>    "id": 27,
+>    "date": "2022-02-21T15:27:08.801+00:00",
+>    "text": "This is a test note",
+>    "sharedWith": null
+> }
+> ```
+
+**updateNote**
+
+> Módosítja egy jegyzet szövegét
+> 
+> *Endpoint*: `PUT http://localhost:8080/notes/update/note` 
+> 
+> *Request body*: 
+> 
+> ```json
+> {
+>    "id": "27",
+>    "text": "This is the new text for the test note"
+> }
+> ```
+
+*Response body*:
+
+> ```jsone
+> {
+>    "id": 27,
+>    "date": "2022-02-21T15:27:08.000+00:00",
+>    "text": "This is the new text for the test note",
+>    "sharedWith": []
+> }
+> ```
+
+**shareNote**
+
+> Megoszt egy jegyzetet egy másik személlyel
+>
+> *Endpoint*: `PUT http://localhost:8080/notes/share/note/27/?uname=cshajni`
+>
+> *Response body*:
+>
+> ```json
+> {
+>    "id": 27,
+>    "date": "2022-02-21T15:27:08.000+00:00",
+>    "text": "This is the new text for the test note",
+>    "sharedWith": [
+>        {
+>            "uname": "cshajni"
+>        }
+>    ]
+> }
+> ```
+
+**deleteNote**
+
+> Letöröl egy jegyzetet
+>
+> *Endpoint*: `DELETE http://localhost:8080/notes/remove/note/27`
+>
+> *Response body*: {}
 
 ### Osztálydiagram
 
-![class-diag-person-takes-notes.png](doc/class-diag-person-takes-notes.png);
+![class-diag.png](doc/class-diag.png)
 
-![class-diag-note-shared-with-person.png](doc/class-diag-note-shared-with-person.png);
 
 ## Elméleti bevezető
 Általánosságban elmondható hogy az aplikációt három nagyobb egységbe tagoljuk. 
@@ -45,27 +142,7 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
 
 ### Web Applikáció
 
-```
-          *------*   - HTML, CSS
-          |  UI  |   - JavaScript
-          *------*   - React
-              ^      - Angular
-              |
-      API <-- |
-              |
-              v
-        *-----------*
-        |  Backend  | - Java
-        *-----------*
-              ^
-              |
-              |
-              |
-              v
-          *------*    - MySql 
-          |  DB  |    - Oracle
-          *------*    - Db2
-```
+![3-layer.png](doc/3-layer.png)
 
 Ez a három egység azért bír jelentőséggel, mert ezek egymástól független egységek. Bármelyiket le lehet cserélni közülük anélkül, hogy a másik kettőn módosítanánk.
 
@@ -118,17 +195,7 @@ mvn archetype:generate -DgroupId=test -DartifactId=demo -D archetypeArtifactId=m
 
 #### Folyamat
 
-```
-
-                                                                                               --- 
-     -----          * --------------- *     * --------------- *     * --------------- *      /     \
-   /       \        |                 |     |                 |     |                 |     |\     /|
-  |   user  | ----> | @RestController | --> |    @Servive     | --> |   @Repository   | --> |  ---  |
-   \       /        |                 |     |                 |     |                 |     |   DB  |
-     -----          * --------------- *     * --------------- *     * --------------- *      \     /
-                                                                                               --- 
-
-```
+![3-layer-annotations.png](doc/3-layer-annotations.png)
 
 #### Élettartam
 
