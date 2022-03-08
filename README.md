@@ -91,7 +91,7 @@ Készítsünk egy alkalmazást, amelyben a felhasználók jegyzeteket tudnak tá
 
 *Response body*:
 
-> ```jsone
+> ```json
 > {
 >    "id": 27,
 >    "date": "2022-02-21T15:27:08.000+00:00",
