@@ -19,8 +19,6 @@ public class PersonController {
 	
 	@GetMapping("/all/notes")
 	public List<Note> getAllNotes(@RequestParam String uname) {
-		return personService
-				.getPersonWithUsername(uname)
-				.getNotes();
+		return personService.getPersonWithUsername(uname).getNotes();
 	}	
 }
